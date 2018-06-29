@@ -11,9 +11,23 @@ using System.Windows.Input;
 
 namespace LinkManager
 {
-
+    public static class Utils
+    {
+        public static async Task WaitForStableValue<T>(Func<T> getValue, int waitTime)
+        {
+            var value = getValue();
+            while (true)
+            {
+                await Task.Delay(waitTime);
+                var newValue = getValue();
+                if (EqualityComparer<T>.Default.Equals(value, newValue)) return;
+                value = newValue;
+            }
+        }
+    }
     public class Comamnd : ICommand
     {
+       
         public static ICommand Single(ref ICommand field, Action<object> execute, Func<object, bool> canExecute = null)
         {
             return field ?? (field = new Comamnd

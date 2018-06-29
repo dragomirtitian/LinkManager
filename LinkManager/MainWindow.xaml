@@ -79,6 +79,7 @@
                     <Button Content="Save" Padding="3" Command="{Binding Save}"></Button>
                     <Button Content="New" Padding="3" Command="{Binding New}"></Button>
                     <Button Content="Delete" Padding="3" Command="{Binding Delete}"></Button>
+                    <Button Content="All" Padding="3" Command="{Binding All}"></Button>
                 </UniformGrid>
             </Grid>
         </Expander>
